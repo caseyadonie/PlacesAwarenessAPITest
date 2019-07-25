@@ -1,34 +1,22 @@
----
-description: 'Entry Point: http://184.107.228.154/PayEaziConnect/b1/'
----
+# ValidateUsers
 
-# PayEazi Web API
-
-{% api-method method="post" host="End Point " path="sms/NewRegistrationSMS" %}
+{% api-method method="post" host="http://184.107.228.154/PayEaziConnect/b1/" path="users/ValidateUser" %}
 {% api-method-summary %}
-Registration Step 1
+ ValidateUser
 {% endapi-method-summary %}
 
 {% api-method-description %}
-This is Used to Check if Mobile No is already Registered and also triggers an OTP for registration
+This endpoint allows you to get free cakes.
 {% endapi-method-description %}
 
 {% api-method-spec %}
 {% api-method-request %}
 {% api-method-body-parameters %}
-{% api-method-parameter name="keyword" type="string" required=false %}
-Example PayEazi
-{% endapi-method-parameter %}
-
-{% api-method-parameter name="message" type="string" required=false %}
-Leave blank
-{% endapi-method-parameter %}
-
-{% api-method-parameter name="to" type="string" required=true %}
+{% api-method-parameter name="MobileNo" type="string" required=false %}
 
 {% endapi-method-parameter %}
 
-{% api-method-parameter name="from" type="string" required=true %}
+{% api-method-parameter name="PassCode" type="string" required=false %}
 
 {% endapi-method-parameter %}
 {% endapi-method-body-parameters %}
@@ -42,7 +30,9 @@ Cake successfully retrieved.
 
 ```javascript
 {
-    "status": "Success"
+    "name": "Cake's name",
+    "recipe": "Cake's recipe name",
+    "cake": "Binary cake"
 }
 ```
 {% endapi-method-response-example %}
@@ -54,7 +44,7 @@ Could not find a cake matching this query.
 
 ```javascript
 {
-    "message": "Bad Request"
+    "message": "Ain't no cake like that."
 }
 ```
 {% endapi-method-response-example %}

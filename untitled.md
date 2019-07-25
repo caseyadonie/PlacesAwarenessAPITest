@@ -2,36 +2,28 @@
 description: 'Entry Point: http://184.107.228.154/PayEaziConnect/b1/'
 ---
 
-# PayEazi Web API
+# Registration OTP
 
-{% api-method method="post" host="End Point " path="sms/NewRegistrationSMS" %}
+{% api-method method="post" host="Endpoint " path="users/ValidateSMSCodeUser?isValidation=true" %}
 {% api-method-summary %}
-Registration Step 1
+Validate OTP
 {% endapi-method-summary %}
 
 {% api-method-description %}
-This is Used to Check if Mobile No is already Registered and also triggers an OTP for registration
+This endpoint allows you to get free cakes.
 {% endapi-method-description %}
 
 {% api-method-spec %}
 {% api-method-request %}
-{% api-method-body-parameters %}
-{% api-method-parameter name="keyword" type="string" required=false %}
-Example PayEazi
+{% api-method-query-parameters %}
+{% api-method-parameter name="MobileNo" type="string" required=true %}
+Mobile No of the User
 {% endapi-method-parameter %}
 
-{% api-method-parameter name="message" type="string" required=false %}
-Leave blank
+{% api-method-parameter name="SMSVerificationCode" type="boolean" required=true %}
+the OTP from User
 {% endapi-method-parameter %}
-
-{% api-method-parameter name="to" type="string" required=true %}
-
-{% endapi-method-parameter %}
-
-{% api-method-parameter name="from" type="string" required=true %}
-
-{% endapi-method-parameter %}
-{% endapi-method-body-parameters %}
+{% endapi-method-query-parameters %}
 {% endapi-method-request %}
 
 {% api-method-response %}
@@ -42,7 +34,10 @@ Cake successfully retrieved.
 
 ```javascript
 {
-    "status": "Success"
+    "PassCode": "null",
+    "Surname": "null",
+    "OtherNames": "null"
+    ...
 }
 ```
 {% endapi-method-response-example %}
@@ -54,7 +49,7 @@ Could not find a cake matching this query.
 
 ```javascript
 {
-    "message": "Bad Request"
+    "message": "Expectation Failed"
 }
 ```
 {% endapi-method-response-example %}
